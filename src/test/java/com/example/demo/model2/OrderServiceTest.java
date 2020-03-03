@@ -13,20 +13,13 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.context.annotation.ComponentScan;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@DataJpaTest
-@ComponentScan({"com.example.demo.domain.model2"})
-@EntityScan("com.example.demo.domain.model2")
-public class OrderServiceTest {
+public class OrderServiceTest extends Model2Test {
 
     private static StringBuilder output = new StringBuilder();
 
