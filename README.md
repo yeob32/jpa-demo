@@ -1,6 +1,6 @@
 # Jpa-Demo
 
-> JPA 프로그래밍 ( 김영한 ) 샘플
+> JPA 프로그래밍 ( 김영한 )
 
 
 ## Querydsl 설정

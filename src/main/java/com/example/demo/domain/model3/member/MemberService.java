@@ -33,7 +33,7 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-//    public Member findOne(Long id) {
-//        return memberRepository.findOne(id);
-//    }
+    public Member findById(Long id) {
+        return memberRepository.findById(id).orElse(null);
+    }
 }
