@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.2.4.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
+    id 'com.ewerk.gradle.plugins.querydsl' version "1.0.10"
 }
 
 group = 'com.example'
@@ -26,8 +27,14 @@ dependencies {
     // https://mvnrepository.com/artifact/com.h2database/h2
     implementation group: 'com.h2database', name: 'h2', version: '1.4.199'
 
-
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    // https://mvnrepository.com/artifact/com.querydsl/querydsl-jpa
+    compile group: 'com.querydsl', name: 'querydsl-jpa', version: '4.2.1'
+    // https://mvnrepository.com/artifact/com.querydsl/querydsl-apt
+    compile group: 'com.querydsl', name: 'querydsl-apt', version: '4.2.1'
+
+
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
@@ -40,3 +47,28 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+def querydslSrcDir = 'src/main/generated'
+
+querydsl {
+    library = "com.querydsl:querydsl-apt"
+    jpa = true
+    querydslSourcesDir = querydslSrcDir
+}
+
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
+}
+
+configurations {
+    querydsl.extendsFrom compileClasspath
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java', querydslSrcDir]
+        }
+    }
+}
+
