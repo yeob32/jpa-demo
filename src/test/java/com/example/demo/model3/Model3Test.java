@@ -3,10 +3,12 @@ package com.example.demo.model3;
 import com.example.demo.domain.model3.item.Book;
 import com.example.demo.domain.model3.member.Member;
 import com.example.demo.domain.model3.model.Address;
+import com.example.demo.global.config.QuerydslConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.persistence.EntityManager;
@@ -19,6 +21,7 @@ import javax.persistence.PersistenceContext;
 @ComponentScan({"com.example.demo.domain.model3"})
 @EntityScan({"com.example.demo.domain.model3"})
 @EnableJpaRepositories(basePackages = "com.example.demo.domain.model3")
+@Import(QuerydslConfig.class) // import querydsl config
 public class Model3Test {
 
     @PersistenceContext

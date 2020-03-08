@@ -6,7 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Repository // OrderRepository 에서 상속하면 JpaRepository 기능이랑 같이 쓸 수 있다.
 public interface CustomOrderRepository {
-    public List<Order> search(OrderSearch orderSearch);
+    List<Order> search(OrderSearch orderSearch);
+    List<Order> searchByJpaFactory(OrderSearch orderSearch);
 }

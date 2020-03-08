@@ -60,7 +60,7 @@ public class QueryDslTest extends Model3Test {
     }
 
     @Test
-    @DisplayName("")
+    @DisplayName("커스텀 리파지토리 테스트")
     public void customRepository() {
         Member member = memberService.findById(1L);
         Item item = itemService.findItem(2L);  // 시퀀스 전략 지정해줘야함
@@ -74,6 +74,11 @@ public class QueryDslTest extends Model3Test {
 
         assertFalse(order.isEmpty());
         assertSame(order.get(0).getOrderStatus(), OrderStatus.ORDER);
+
+        List<Order> order2 = customOrderRepository.searchByJpaFactory(orderSearch);
+
+        assertFalse(order2.isEmpty());
+        assertSame(order2.get(0).getOrderStatus(), OrderStatus.ORDER);
     }
 
 }
