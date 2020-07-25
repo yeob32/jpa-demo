@@ -1,4 +1,4 @@
-# Jpa-Demo
+# Jpa-tutorial
 
 > JPA 프로그래밍 ( 김영한 )
 
